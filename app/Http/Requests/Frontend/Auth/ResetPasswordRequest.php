@@ -31,12 +31,13 @@ class ResetPasswordRequest extends FormRequest
         return [
             'token' => ['required'],
             'email' => ['required', 'email'],
-            'password' => array_merge(
-                [
-                    new UnusedPassword($this->get('token')),
-                ],
-                PasswordRules::changePassword($this->email)
-            ),
+            // 'password' => array_merge(
+            //     [
+            //         new UnusedPassword($this->get('token')),
+            //     ],
+            //     PasswordRules::changePassword($this->email)
+            // ),
+            'password' => ['required', 'min:6'],
         ];
     }
 }
