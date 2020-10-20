@@ -10,7 +10,7 @@ return [
     ],
 
     // Whether or not registration is enabled
-    'registration' => env('ENABLE_REGISTRATION', true),
+    'registration' => env('ENABLE_REGISTRATION', false),
 
     // Configurations for the user
     'users' => [

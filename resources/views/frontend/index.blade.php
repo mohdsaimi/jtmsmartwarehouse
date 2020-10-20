@@ -26,7 +26,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <i class="fab fa-font-awesome-flag"></i> Font Awesome @lang('strings.frontend.test')
+                    <i class="fab fa-font-awesome-flag"></i> Fxont Awesome @lang('strings.frontend.test')
                 </div>
                 <div class="card-body">
                     <i class="fas fa-home"></i>
