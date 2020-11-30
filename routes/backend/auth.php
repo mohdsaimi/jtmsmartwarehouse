@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Auth\Institut\InstitutController;
 use App\Http\Controllers\Backend\Auth\Role\RoleController;
 use App\Http\Controllers\Backend\Auth\User\UserConfirmationController;
 use App\Http\Controllers\Backend\Auth\User\UserController;
@@ -70,6 +71,19 @@ Route::group([
             Route::get('edit', [RoleController::class, 'edit'])->name('role.edit');
             Route::patch('/', [RoleController::class, 'update'])->name('role.update');
             Route::delete('/', [RoleController::class, 'destroy'])->name('role.destroy');
+        });
+    });
+
+    // Institut Management
+    Route::group(['namespace' => 'Instutut'], function () {
+        Route::get('institut', [InstitutController::class, 'index'])->name('institut.index');
+        Route::get('institut/create', [InstitutController::class, 'create'])->name('institut.create');
+        Route::post('institut', [InstitutController::class, 'store'])->name('institut.store');
+
+        Route::group(['prefix' => 'institut/{institut}'], function () {
+            Route::get('edit', [InstitutController::class, 'edit'])->name('institut.edit');
+            Route::patch('/', [InstitutController::class, 'update'])->name('institut.update');
+            Route::delete('/', [InstitutController::class, 'destroy'])->name('institut.destroy');
         });
     });
 });
