@@ -25,4 +25,9 @@ trait UserRelationship
     {
         return $this->hasMany(PasswordHistory::class);
     }
+
+    public function institut()
+    {
+        return $this->belongsTo('App\Models\Institut');
+    }
 }

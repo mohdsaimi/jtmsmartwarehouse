@@ -36,6 +36,7 @@ abstract class BaseUser extends Authenticatable implements Recordable
         'first_name',
         'last_name',
         'email',
+        'institut_id',
         'avatar_type',
         'avatar_location',
         'password',
@@ -107,4 +108,13 @@ abstract class BaseUser extends Authenticatable implements Recordable
     {
         return $this->id !== 1;
     }
+
+
+
+    public function fetchInstitutByUser($institut_id)
+    {
+        $institut = User::find($institut_id)->nama_institut;
+        return $institut;
+    }
+
 }

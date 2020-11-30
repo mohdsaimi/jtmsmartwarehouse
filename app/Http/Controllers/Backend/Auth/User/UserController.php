@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
 use App\Models\Auth\User;
+use App\Models\Institut;
 use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
@@ -40,6 +41,7 @@ class UserController extends Controller
     public function index(ManageUserRequest $request)
     {
         return view('backend.auth.user.index')
+            ->withInstituts(Institut::all())
             ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
     }
 
@@ -52,8 +54,10 @@ class UserController extends Controller
      */
     public function create(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
     {
+
         return view('backend.auth.user.create')
             ->withRoles($roleRepository->with('permissions')->get(['id', 'name']))
+            ->withInstituts(Institut::all())
             ->withPermissions($permissionRepository->get(['id', 'name']));
     }
 
@@ -65,6 +69,8 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+
+
         $this->userRepository->create($request->only(
             'first_name',
             'last_name',
@@ -74,7 +80,8 @@ class UserController extends Controller
             'confirmed',
             'confirmation_email',
             'roles',
-            'permissions'
+            'permissions',
+            'institut_id'
         ));
 
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.created'));
@@ -104,6 +111,7 @@ class UserController extends Controller
     {
         return view('backend.auth.user.edit')
             ->withUser($user)
+            ->withInstituts(Institut::all())
             ->withRoles($roleRepository->get())
             ->withUserRoles($user->roles->pluck('name')->all())
             ->withPermissions($permissionRepository->get(['id', 'name']))
@@ -124,6 +132,7 @@ class UserController extends Controller
             'first_name',
             'last_name',
             'email',
+            'institut_id',
             'roles',
             'permissions'
         ));

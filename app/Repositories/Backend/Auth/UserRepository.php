@@ -106,6 +106,7 @@ class UserRepository extends BaseRepository
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
+                'institut_id' => $data['institut_id'],
                 'password' => $data['password'],
                 'active' => isset($data['active']) && $data['active'] === '1',
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
@@ -164,6 +165,7 @@ class UserRepository extends BaseRepository
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
+                'institut_id' => $data['institut_id'],
             ])) {
                 // Add selected roles/permissions
                 $user->syncRoles($data['roles']);
