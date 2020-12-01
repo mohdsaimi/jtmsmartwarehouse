@@ -1,4 +1,4 @@
-## Laravel Boilerplate (Current: Laravel 6.*) ([Demo](https://demo.laravel-boilerplate.com))
+## JTM Smart Warehouse using Laravel Boilerplate (Current: Laravel 6.*) ([Demo](https://demo.laravel-boilerplate.com))
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-boilerplate)
 [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-boilerplate) 
