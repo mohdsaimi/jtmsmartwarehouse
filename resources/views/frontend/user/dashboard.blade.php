@@ -59,11 +59,19 @@
                                 <div class="col">
                                     <div class="card mb-4">
                                         <div class="card-header">
-                                            Item
+                                            <a href="{{ route('admin.dashboard')}}" >
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="button" aria-pressed="false">
+                                                <i class="nav-icon fas fa-warehouse"></i>
+                                              </button></a>
+                                              Pengurusan Stok
+
                                         </div><!--card-header-->
 
                                         <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non qui facilis deleniti expedita fuga ipsum numquam aperiam itaque cum maxime.
+                                        <p><b>{{$stok ?? ''}}</b> item stok didaftarkan</p>
+                                        <p><b>{{$deviceall ?? ''}}</b> peranti IOT didaftarkan</p>
+                                        <p><b>{{$stok_ins ?? ''}}</b> item stok didaftarkan di institut anda</p>
+                                        <p><b>{{$device ?? ''}}</b> peranti IOT tersedia di institut anda</p>
                                         </div><!--card-body-->
                                     </div><!--card-->
                                 </div><!--col-md-6-->
