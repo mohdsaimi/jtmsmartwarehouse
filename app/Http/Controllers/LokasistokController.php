@@ -63,7 +63,7 @@ class LokasistokController extends Controller
 
         /* ->withLokasistoks(Lokasistoks::where('institut_id',auth()->user()->institut_id)->get()) */
 
-        $lokasistok = $query->orderBy('id','ASC')->paginate(25);
+        $lokasistok = $query->orderBy('device_id','ASC')->paginate(25);
 
 
 
@@ -114,7 +114,11 @@ class LokasistokController extends Controller
         }
 
         if($this->check_device($request->device_id,$request->petak) > 0){
-            return redirect()->back()->withFlashDanger(__('Lokasi Stok telah wujud'));
+            return redirect()->back()->withFlashDanger(__('Lokasi stok telah wujud'));
+        }
+
+        if($this->check_petak($request->device_id,$request->petak) == 0){
+            return redirect()->back()->withFlashDanger(__('Lokasi stok melebihi petak yang disediakan!'));
         }
 
         $lokasistok = new Lokasistoks();
@@ -139,9 +143,14 @@ class LokasistokController extends Controller
             ->count();
     }
     public function check_device($device_id,$petak){
-        /* return Lokasistoks::where(['device_id',$id],['petak',$petak])->count(); */
         return Lokasistoks::where('device_id',$device_id)
             ->where('petak',$petak)
+            ->count();
+    }
+
+    public function check_petak($device_id,$petak){
+        return Devices::where('id',$device_id)
+            ->where('bil_petak','>=',$petak)
             ->count();
     }
 
@@ -165,6 +174,10 @@ class LokasistokController extends Controller
     public function edit(Lokasistoks $lokasistok)
     {
         //
+        return view('backend.editlokasistok')
+            ->withLokasistok($lokasistok)
+            ->withDevice(Devices::where('institut_id',auth()->user()->institut_id)->get())
+            ->withStok(Stoks::all());
     }
 
     /**
@@ -174,9 +187,27 @@ class LokasistokController extends Controller
      * @param  \App\Lokasistok  $lokasistok
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lokasistoks $lokasistok)
+    public function update(Request $request, $lokasistok)
     {
         //
+        $updateData = $request->validate([
+            'device_id' => 'required',
+            'petak' => 'required'
+        ]);
+
+        if(!empty($request->device_id)){
+            if($this->check_device($request->device_id,$request->petak) > 0){
+                return redirect()->back()->withFlashDanger(__('Lokasi stok telah wujud'));
+            }
+
+            if($this->check_petak($request->device_id,$request->petak) == 0){
+                return redirect()->back()->withFlashDanger(__('Lokasi stok melebihi petak yang disediakan!'));
+            }
+        }
+
+        Lokasistoks::whereId($lokasistok)->update($updateData);
+
+        return redirect()->route('admin.lokasistok')->withFlashSuccess(__('Lokasi Stok berjaya dikemaskini.'));
     }
 
     /**
@@ -187,6 +218,8 @@ class LokasistokController extends Controller
      */
     public function destroy(Lokasistoks $lokasistok)
     {
-        //
+        $lokasistok->delete();
+
+        return redirect()->route('admin.lokasistok')->withFlashSuccess(__('Lokasi Stok berjaya dipadam.'));
     }
 }

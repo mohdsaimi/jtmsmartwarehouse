@@ -82,6 +82,22 @@
                             </div><!--col-->
                         </div><!--form-group-->
 
+                        <div class="form-group row"><!--institut-->
+                            <p class="col-md-2 form-control-label">Institut</p>
+
+                            <div class="col-md-10">
+
+
+                                <select class="form-control" name="institut_id">
+                                <option value="0">Sila Pilih</option>
+                                @foreach($instituts as $institut)
+                                <option value="{{ $institut->id}}">{{ $institut->nama_institut}}</option>
+                                @endforeach
+                                </select>
+
+                            </div><!--col-->
+                        </div><!--institut-->
+
                         <div class="form-group row">
                             {{ html()->label(__('validation.attributes.backend.access.users.active'))->class('col-md-2 form-control-label')->for('active') }}
 

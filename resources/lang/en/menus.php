@@ -24,6 +24,14 @@ return [
                 'main' => 'Roles',
             ],
 
+            'instituts' => [
+                'all' => 'All Institute',
+                'create' => 'Create Institute',
+                'edit' => 'Edit Institute',
+                'management' => 'Institute Management',
+                'main' => 'Institute',
+            ],
+
             'users' => [
                 'all' => 'All Users',
                 'change-password' => 'Change Password',

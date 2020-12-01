@@ -13,6 +13,52 @@
                 </a>
             </li>
 
+            {{-- pengurusan stok --}}
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle {{
+                    active_class(Route::is('admin/stok'), 'open')
+                }}" href="#">
+                    <i class="nav-icon fas fa-warehouse"></i>
+                    Pengurusan Stok</a>
+
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Route::is('admin/stok'))
+                            }}" href="{{ route('admin.stok') }}">
+                                Senarai Nama Stok
+                            </a>
+                        {{-- </li>
+
+                        <li class="nav-item"> --}}
+                            @role('administrator')
+                            <a class="nav-link {{
+                                active_class(Route::is('admin/device'))
+                            }}" href="{{ route('admin.device') }}">
+                                Senarai Peranti IOT Stok
+                            </a>
+                            @endrole
+
+                            <a class="nav-link {{
+                                active_class(Route::is('admin/lokasistok'))
+                            }}" href="{{ route('admin.lokasistok') }}">
+                                Senarai Lokasi Stok
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+
+
+
+
+            </li>
+
+            {{-- end add pengurusan stok --}}
+
             @if ($logged_in_user->isAdmin())
                 <li class="nav-title">
                     @lang('menus.backend.sidebar.system')
@@ -51,6 +97,15 @@
                                 @lang('labels.backend.access.roles.management')
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{
+                                active_class(Route::is('admin/auth/institut*'))
+                            }}" href="{{ route('admin.auth.institut.index') }}">
+                                @lang('labels.backend.access.instituts.management')
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 

@@ -38,8 +38,9 @@ Route::group([
 Route::get('lokasistok', [LokasistokController::class, 'index'])->name('lokasistok');
 Route::get('createlokasistok/{stok}', [LokasistokController::class, 'create'])->name('createlokasistok');
 Route::post('createlokasistok', [LokasistokController::class, 'store'])->name('storelokasistok');
-Route::get('autocomplete', [LokasistokController::class, 'autocomplete'])->name('autocomplete');
-
+Route::get('editlokasistok/{lokasistok}', [LokasistokController::class, 'edit'])->name('editlokasistok');
+Route::patch('updatelokasistok/{lokasistok}', [LokasistokController::class, 'update'])->name('updatelokasistok');
+Route::delete('destroylokasistok/{lokasistok}', [LokasistokController::class, 'destroy'])->name('destroylokasistok');
 
 Route::resource('stoks', StokController::class);
 Route::resource('devices', DeviceController::class);

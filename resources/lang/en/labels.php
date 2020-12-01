@@ -50,6 +50,17 @@ return [
                 ],
             ],
 
+            'instituts' => [
+                'create' => 'Create Institute',
+                'edit' => 'Edit Institute',
+                'management' => 'Institute Management',
+
+                'table' => [
+                    'id' => 'Id',
+                    'nama_institut' => 'Nama Institut',
+                ],
+            ],
+
             'users' => [
                 'active' => 'Active Users',
                 'all_permissions' => 'All Permissions',

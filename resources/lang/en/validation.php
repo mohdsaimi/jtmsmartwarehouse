@@ -170,6 +170,11 @@ return [
                     'sort' => 'Sort',
                 ],
 
+                'instituts' => [
+                    'nama_institut' => 'Nama Institut',
+                    'sort' => 'Sort',
+                ],
+
                 'users' => [
                     'active' => 'Active',
                     'associated_roles' => 'Associated Roles',

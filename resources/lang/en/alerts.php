@@ -18,6 +18,11 @@ return [
             'deleted' => 'The role was successfully deleted.',
             'updated' => 'The role was successfully updated.',
         ],
+        'instituts' => [
+            'created' => 'The institute was successfully created.',
+            'deleted' => 'The institute was successfully deleted.',
+            'updated' => 'The institute was successfully updated.',
+        ],
 
         'users' => [
             'cant_resend_confirmation' => 'The application is currently set to manually approve users.',

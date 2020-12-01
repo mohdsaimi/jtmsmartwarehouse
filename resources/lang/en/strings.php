@@ -129,6 +129,6 @@ return [
             'password_updated' => 'Password successfully updated.',
         ],
 
-        'welcome_to' => 'Welcome to :place',
+        'welcome_to' => 'Selamat Datang :place',
     ],
 ];

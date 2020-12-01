@@ -17,6 +17,11 @@
             </tr>
 
             <tr>
+                <th>Institut</th>
+                <td>{{ optional($user->institut)->nama_institut }}</td>
+            </tr>
+
+            <tr>
                 <th>@lang('labels.backend.access.users.tabs.content.overview.status')</th>
                 <td>@include('backend.auth.user.includes.status', ['user' => $user])</td>
             </tr>

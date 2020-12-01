@@ -49,3 +49,7 @@ Breadcrumbs::for('admin.createlokasistok', function ($trail, $id) {
     $trail->parent('admin.lokasistok');
     $trail->push('Cipta Lokasi Stok Baru', route('admin.createlokasistok', $id));
 });
+Breadcrumbs::for('admin.editlokasistok', function ($trail,$id) {
+    $trail->parent('admin.lokasistok');
+    $trail->push('Edit Lokasi Stok', route('admin.editlokasistok', $id));
+});
